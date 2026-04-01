@@ -326,6 +326,36 @@
         .contact-form { display: grid; gap: 24px; }
         .form-group input, .form-group textarea { width: 100%; background-color: #0e0f0e; border: 1px solid var(--border); padding: 20px; color: var(--text-main); font-family: inherit; }
 
+        /* --- Testimonials --- */
+        .testimonials-section { position: relative; overflow: hidden; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; position: relative; z-index: 2; }
+        .testimonial-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            padding: 40px; 
+            border-radius: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        .testimonial-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .testimonial-content { font-size: 1.1rem; color: var(--text-main); margin-bottom: 30px; font-style: italic; position: relative; }
+        .testimonial-content::before { content: "“"; font-size: 4rem; color: var(--accent); position: absolute; top: -20px; left: -20px; opacity: 0.2; }
+        .testimonial-author { font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        
+        .testimonial-bg-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 130, 17, 0.1) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); }
 
         /* --- RESPONSIVIDADE E CENTRALIZAÇÃO MOBILE/TABLET --- */
@@ -338,6 +368,9 @@
             .contact-container { grid-template-columns: 1fr; padding: 60px 45px; gap: 60px; text-align: center; }
             .contact-info-block .hero-tagline { margin: 0 auto 25px; }
             .contact-direct { display: flex; flex-direction: column; align-items: center; }
+            
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonial-card { text-align: center; }
             
             .results-header { text-align: center !important; margin: 0 auto 60px !important; max-width: 100% !important; }
             .results-grid { grid-template-columns: 1fr; }
@@ -535,28 +568,37 @@
             </div>
         </section>
 
-        <!-- PROVEN RESULTS -->
-        <section id="results" class="section-padding container">
-            <div class="results-header reveal" style="text-align: left; max-width: 800px; margin-bottom: 60px;">
-                <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem);">Resultados Comprovados</h2>
-            </div>
-            
-            <div class="results-grid">
-                <div class="result-item reveal delay-1">
-                    <div class="result-val">R$ 1.2B+</div>
-                    <div class="result-label">Volume Transacionado</div>
+        <!-- TESTIMONIALS -->
+        <section id="testimonials" class="section-padding testimonials-section">
+            <div class="container">
+                <div class="testimonial-bg-blob" style="top: 10%; left: -100px;"></div>
+                <div class="testimonial-bg-blob" style="bottom: 10%; right: -100px; background: radial-gradient(circle, rgba(255, 130, 17, 0.15) 0%, transparent 70%);"></div>
+                
+                <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 80px;">
+                    <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem);">Depoimentos</h2>
                 </div>
-                <div class="result-item reveal delay-2">
-                    <div class="result-val">+500</div>
-                    <div class="result-label">Instituições Conectadas</div>
-                </div>
-                <div class="result-item reveal delay-3">
-                    <div class="result-val">15ms</div>
-                    <div class="result-label">Latência Média</div>
-                </div>
-                <div class="result-item reveal delay-4">
-                    <div class="result-val">99.9%</div>
-                    <div class="result-label">Uptime Garantido</div>
+                
+                <div class="testimonials-grid">
+                    <article class="testimonial-card reveal delay-1">
+                        <div class="testimonial-content">
+                            O Uqbar Day é o evento onde as tendências do mercado de capitais realmente ganham forma. Essencial para quem busca networking de alta qualidade.
+                        </div>
+                        <div class="testimonial-author">Ricardo Almeida</div>
+                    </article>
+
+                    <article class="testimonial-card reveal delay-2">
+                        <div class="testimonial-content">
+                            A profundidade dos debates e a qualificação dos participantes tornam este encontro o mais relevante do ano para o setor de crédito estruturado.
+                        </div>
+                        <div class="testimonial-author">Mariana Costa</div>
+                    </article>
+
+                    <article class="testimonial-card reveal delay-3">
+                        <div class="testimonial-content">
+                            Participar como patrocinador nos permitiu uma visibilidade estratégica única diante dos principais tomadores de decisão do país.
+                        </div>
+                        <div class="testimonial-author">Carlos Eduardo</div>
+                    </article>
                 </div>
             </div>
         </section>
