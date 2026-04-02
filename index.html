@@ -313,7 +313,18 @@
         .result-val { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 15px; }
 
         /* --- Video --- */
-        .video-box { position: relative; width: 100%; max-width: 1000px; margin: 80px auto 0; aspect-ratio: 16/9; background: #111; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+        .video-box { position: relative; width: 100%; max-width: 1000px; margin: 80px auto 0; aspect-ratio: 16/9; background: #111; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .video-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, var(--bg-main) 20%, transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
         .play-btn { width: clamp(60px, 15vw, 100px); height: clamp(60px, 15vw, 100px); background-color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .play-btn svg { width: 40%; fill: #000; margin-left: 6px; }
 
@@ -483,7 +494,7 @@
                 </ul>
             </nav>
             <div class="header-btns">
-                <a href="#contact" class="btn btn-primary nav-cta" style="padding: 10px 20px; font-size: 0.7rem;">START NOW</a>
+                <a href="#contact" class="btn btn-primary nav-cta" style="padding: 10px 20px; font-size: 0.7rem;">PATROCINE</a>
                 <div class="menu-toggle" id="mobile-menu">
                     <span></span>
                     <span></span>
