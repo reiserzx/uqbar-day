@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uqbar Day | Performance Architecture</title>
+    <title>Uqbar Day</title>
     
     <!-- Pre-connect para performance de fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -213,6 +213,15 @@
             letter-spacing: -4px;
         }
 
+        .hero-date {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
         .hero-subtext {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: var(--text-secondary);
@@ -257,6 +266,19 @@
             z-index: 2;
             opacity: 0.5;
             animation: aura-pulse 6s ease-in-out infinite;
+        }
+
+        .cursor-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 130, 17, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         @keyframes aura-rotate {
@@ -507,18 +529,20 @@
     <main>
         <!-- HERO -->
         <section class="hero container">
+            <div class="cursor-glow"></div>
             <div class="hero-aura"></div>
             <div class="hero-aura-ring"></div>
 
             <div class="hero-content reveal">
-                <h1 style="font-size: 0; margin-bottom: 30px;">
+                <h1 style="font-size: 0; margin-bottom: 20px;">
                     <img src="assets/Ativo 1.svg" alt="Uqbar Day" style="max-width: clamp(200px, 70%, 350px); height: auto; display: block; margin: 0 auto;">
                 </h1>
-                <p class="hero-subtext">O principal evento de finanças estruturadas do Brasil</p>
+                <p class="hero-date">Outubro | São Paulo</p>
+                <p class="hero-subtext">O único evento que reúne 300+ C-level do mercado de crédito e de capitais.</p>
                 
                 <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">SEJA UM PATROCINADOR</a>
-                    <a href="#contact" class="btn btn-outline">QUERO ME INSCREVER</a>
+                    <a href="#contact" class="btn btn-primary">QUERO PATROCINAR</a>
+                    <a href="#contact" class="btn btn-outline">Ver público e formatos</a>
                 </div>
 
                 <div class="hero-footer-stats">
@@ -770,6 +794,27 @@
                 }
             }
             setInterval(nextSlide, 5000);
+
+            // Cursor Glow Interaction
+            const hero = document.querySelector('.hero');
+            const glow = document.querySelector('.cursor-glow');
+
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                glow.style.left = `${x}px`;
+                glow.style.top = `${y}px`;
+            });
+
+            hero.addEventListener('mouseenter', () => {
+                glow.style.opacity = '1';
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                glow.style.opacity = '0';
+            });
         });
     </script>
 </body>
